@@ -1,11 +1,11 @@
 import style from './AddTasks.module.css'
 import ToDoItem from './ToDoItem'
-function AddTasks({Tasks}){
+function AddTasks({Tasks, Handeldelete}){
   return (
     <>
    <div className={style['item-style']} >
       {Tasks.map((task)=>(
-        <ToDoItem key={task.name} todoname={task.name}
+        <ToDoItem  Handeldelete={Handeldelete} key={task.name} todoname={task.name}
         tododate={task.date}></ToDoItem>
       ))}
     </div>
