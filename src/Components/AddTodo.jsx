@@ -14,8 +14,7 @@ function AddTodo({updatedtask}){
   }
   const handelbuttonclicked=()=>{
     updatedtask(intask,indate);
-    setintask=("");
-    setindate=("");
+
   };
   return (
   <div className={"row mt-4"}>
