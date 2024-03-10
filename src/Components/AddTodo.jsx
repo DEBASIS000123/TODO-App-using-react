@@ -1,36 +1,30 @@
-import { useState } from "react"
+import { useRef } from "react"
 
 function AddTodo({updatedtask}){
-  let [intask,setintask]=useState();
-  let [indate,setindate]=useState();
+  const todorefname=useRef();
+  const todorefdate=useRef();
 
-  const handelnamechnage=(event)=>{
-    setintask(event.target.value);
-    
-  }
-  const handeldatechnage=(event)=>{
-    setindate(event.target.value);
-    
-  }
-  const handelbuttonclicked=()=>{
+  const handelbuttonclicked=(event)=>{
+    event.preventDefault();
+    const intask=todorefname.current.value;
+    const indate=todorefdate.current.value;
     updatedtask(intask,indate);
 
   };
   return (
-  <div className={"row mt-4"}>
+  <form className={"row mt-4"} onSubmit={handelbuttonclicked}>
     <div className="col-6">
     <input type=" text" placeholder="Enter Todo Here" 
-    onChange={handelnamechnage} required/>
+    ref={todorefname}/>
   </div>
   <div className="col-4">
     <input type="date" 
-    onChange={handeldatechnage} required/>
+    ref={todorefdate}/>
   </div>
   <div className="col-2">
-  <button type="button" className="btn btn-success"
-  onClick={handelbuttonclicked}>Add</button>
+  <button type="submit" className="btn btn-success">Add</button>
   </div>
-  </div>
+  </form>
   )
 }
 export default AddTodo
