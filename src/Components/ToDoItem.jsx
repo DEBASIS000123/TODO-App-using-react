@@ -1,5 +1,9 @@
+import { useContext } from "react";
+import { todoitem } from "../store/todo-items-store";
 
-function ToDoItem({todoname,tododate,Handeldelete}){
+function ToDoItem({todoname,tododate}){
+  const TasksObj= useContext(todoitem);
+  const Handeldelete=TasksObj.Handeldelete;
   return <>
   <div className="row mt-3">
   <div className="col-6">

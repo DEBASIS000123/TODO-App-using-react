@@ -1,6 +1,8 @@
-import { useRef } from "react"
+import { useContext, useRef} from "react"
+import { todoitem } from "../store/todo-items-store";
 
-function AddTodo({updatedtask}){
+function AddTodo(){
+  const {updatedtask}=useContext(todoitem);
   const todorefname=useRef();
   const todorefdate=useRef();
 

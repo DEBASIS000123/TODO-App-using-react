@@ -5,10 +5,12 @@ import AddTasks from './Components/AddTasks'
 import './App.css'
 import { useState } from 'react'
 import WelcomeMeaasge from './Components/WelcomeMessage'
+import { todoitem } from './store/todo-items-store'
 
 function App() {
 
   let [task,settask]=useState([]);
+
   const updatedtask=(itemname,itemdate)=>{
     const newtasks=[...task,{name:itemname, date:itemdate}];
     settask(newtasks);
@@ -19,12 +21,14 @@ function App() {
     settask(newtodotask);
   }
   return (
-    <Container>
-      <TodoHeading></TodoHeading>
-      <AddTodo updatedtask={updatedtask}></AddTodo>
-      {task.length=== 0 && <WelcomeMeaasge></WelcomeMeaasge>}
-      <AddTasks Tasks={task}  Handeldelete={Handeldelete}></AddTasks>
+    <todoitem.Provider value={{task,Handeldelete,updatedtask,}}> 
+      <Container>
+        <TodoHeading></TodoHeading>
+         <AddTodo></AddTodo>
+        <WelcomeMeaasge></WelcomeMeaasge>
+        <AddTasks></AddTasks>
     </Container>
+    </todoitem.Provider>
   )
 
 }
